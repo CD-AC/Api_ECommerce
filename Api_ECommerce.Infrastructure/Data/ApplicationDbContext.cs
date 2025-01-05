@@ -17,7 +17,6 @@ namespace Api_ECommerce.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configuraciones adicionales (fluente) si es necesario
             base.OnModelCreating(modelBuilder);
         }
     }

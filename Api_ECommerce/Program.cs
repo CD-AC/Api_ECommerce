@@ -1,22 +1,24 @@
 using Api_ECommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Api_ECommerce.Core.Interfaces;
+using Api_ECommerce.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Agrega el DbContext, especificando que use SQL Server y la cadena de conexión
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 2. Agrega el servicio de controladores
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 builder.Services.AddControllers();
 
-// 3. Agregar Swagger (opcional, recomendado para documentación)
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configuración final
 var app = builder.Build();
 
-// Sección de middleware
+app.UseHttpsRedirection();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -24,5 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();

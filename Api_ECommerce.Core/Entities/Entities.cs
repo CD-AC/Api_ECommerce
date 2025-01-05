@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace Api_ECommerce.Core.Entities
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Precio { get; set; }
         public int Stock { get; set; }
         public string Categoria { get; set; }
@@ -29,15 +31,10 @@ namespace Api_ECommerce.Core.Entities
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
-
-        // Relación con el cliente
         public int ClientId { get; set; }
         public Client Client { get; set; }
-
-        // Detalles del pedido
         public ICollection<OrderItem> OrderItems { get; set; }
-
-        // Monto total
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Total { get; set; }
     }
 
@@ -51,7 +48,9 @@ namespace Api_ECommerce.Core.Entities
         public Product Product { get; set; }
 
         public int Cantidad { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal PrecioUnitario { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal SubTotal { get; set; }
     }
 }

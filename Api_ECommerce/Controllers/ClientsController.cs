@@ -10,9 +10,9 @@ namespace Api_ECommerce.API.Controllers
     [Route("api/[controller]")]
     public class ClientsController : ControllerBase
     {
-        private readonly IClientRepository _clientRepository;
+        private readonly IClient _clientRepository;
 
-        public ClientsController(IClientRepository clientRepository)
+        public ClientsController(IClient clientRepository)
         {
             _clientRepository = clientRepository;
         }

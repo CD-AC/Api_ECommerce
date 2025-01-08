@@ -7,7 +7,7 @@ using Api_ECommerce.Infrastructure.Data;
 
 namespace Api_ECommerce.Infrastructure.Repositories
 {
-    public class ClientRepository : IClientRepository
+    public class ClientRepository : IClient
     {
         private readonly ApplicationDbContext _context;
 

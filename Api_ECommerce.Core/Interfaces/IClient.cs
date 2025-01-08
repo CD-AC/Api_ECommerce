@@ -4,7 +4,7 @@ using Api_ECommerce.Core.Entities;
 
 namespace Api_ECommerce.Core.Interfaces
 {
-    public interface IClientRepository
+    public interface IClient
     {
         Task<IEnumerable<Client>> GetAllAsync();
         Task<Client> GetByIdAsync(int id);
